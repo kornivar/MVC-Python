@@ -1,5 +1,4 @@
-from View.CView import CView
+from Controller.CController import CController
 
-console = CView()
-
-console.start()
+app = CController()
+app.start()
