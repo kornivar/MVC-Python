@@ -1,4 +1,4 @@
-from View.GView import GView
+from Controller.GController import GController
 
-console = GView()
+console = GController()
 console.start()

@@ -1,7 +1,9 @@
 import tkinter as tk
 
 class GView:
-    def __init__(self):
+    def __init__(self, controller):
+        self.controller = controller
+
         self.root = tk.Tk()
         self.root.geometry("500x475")
         self.root.title("Hangman Game")
@@ -59,18 +61,11 @@ class GView:
                 ========='''
             ]
 
-        labelG = tk.Label(self.root, text=self.stages[3], font=('Courier', 14), bg = "lightblue", justify="left")
-        labelG.pack(pady=10, anchor="n", padx=50)
+        self.labelStage = tk.Label(self.root, text=self.stages[self.stage_count], font=('Courier', 14), width=24, justify="left")
+        self.labelStage.pack(pady=(0,10), padx=(0,80))
 
-        labelW = tk.Label(self.root, text="Enter day", font=('Arial', 14), bg = "lightblue")
-        labelW.pack()
-
-
-    def on_button_click(self):
-        self.controller.handle_button_click()
-
-    def update_label(self, new_text):
-        self.label.config(text=new_text)
+        self.labelWord = tk.Label(self.root, text="", font=('Arial', 14), bg = "whitesmoke")
+        self.labelWord.pack()
 
     def start(self):
         self.root.mainloop()
