@@ -8,17 +8,30 @@ class GModel:
          'rhino salmon seal shark sheep skunk sloth snake spider '
          'stork swan tiger toad trout turkey turtle weasel whale wolf '
          'wombat zebra ').split()
-        self.word = self.get_word()
+        self.word = ""
+        self.stage_count = 0
         self.letters = []
         self.guessed_letters = []
 
     def get_word(self):
-        return random.choice(self.words)
+        self.word = random.choice(self.words)
+        self.letters = []
+        self.guessed_letters = []
+        self.stage_count = 0
 
     def get_letters(self):
         for i in self.word:
             self.letters.append(i)
 
     def check_letter(self, letter):
-        return letter in self.letters
+        if letter in self.guessed_letters:
+            return None   
+
+        if letter in self.letters:
+            self.guessed_letters.append(letter)
+            return True
+
+        self.stage_count += 1
+        return False
+        
 
